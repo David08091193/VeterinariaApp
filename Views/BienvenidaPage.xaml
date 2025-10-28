@@ -6,7 +6,7 @@
 
     <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
         <Image Source="images.png"
-               HeightRequest="180"
+               HeightRequest="230"
                HorizontalOptions="Center"/>
 
         <Label Text="Bienvenido a Veterinaria DR.MASCOTA"
