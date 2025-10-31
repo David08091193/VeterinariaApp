@@ -1,17 +1,28 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
+using System.IO;
+using VeterinariaApp.Data;
 using VeterinariaApp.Views;
 
-namespace VeterinariaApp;
-
-public partial class App : Application
+namespace VeterinariaApp
 {
-    public App()
+    public partial class App : Application
     {
-        InitializeComponent();
+        public static MascotaDatabase Database { get; private set; }
 
-        // Establece la página principal como una NavigationPage que inicia en BienvenidaPage
-        MainPage = new NavigationPage(new BienvenidaPage());
+        public App()
+        {
+            InitializeComponent();
+
+            // Ruta de la base de datos local
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "Mascotas.db3");
+
+            // Inicializar la base de datos
+            Database = new MascotaDatabase(dbPath);
+
+            // Establecer la página principal
+            MainPage = new NavigationPage(new BienvenidaPage());
+        }
     }
 }

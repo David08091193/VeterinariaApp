@@ -1,6 +1,8 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Media;
 using System;
+using VeterinariaApp.Models;
+
 
 namespace VeterinariaApp.Views
 {
@@ -47,6 +49,18 @@ namespace VeterinariaApp.Views
                 await DisplayAlert("Validación", "Por favor completa todos los campos.", "OK");
                 return;
             }
+
+            var nuevaMascota = new Mascota
+            {
+                Nombre = nombre,
+                Especie = especie,
+                Raza = raza,
+                Edad = edad,
+                FotoPath = fotoFile?.FullPath
+            };
+
+            await App.Database.GuardarMascotaAsync(nuevaMascota);
+
 
             await DisplayAlert("Éxito", "Mascota registrada correctamente.", "OK");
 
