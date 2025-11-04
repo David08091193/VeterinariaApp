@@ -3,7 +3,6 @@ using Microsoft.Maui.Media;
 using System;
 using VeterinariaApp.Models;
 
-
 namespace VeterinariaApp.Views
 {
     public partial class RegistroMascotaPage : ContentPage
@@ -61,7 +60,6 @@ namespace VeterinariaApp.Views
 
             await App.Database.GuardarMascotaAsync(nuevaMascota);
 
-
             await DisplayAlert("Éxito", "Mascota registrada correctamente.", "OK");
 
             nombreEntry.Text = "";
@@ -70,6 +68,11 @@ namespace VeterinariaApp.Views
             edadEntry.Text = "";
             fotoMascota.Source = null;
             fotoMascota.IsVisible = false;
+        }
+
+        private async void OnVerMascotasClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ListaMascotasPage());
         }
     }
 }

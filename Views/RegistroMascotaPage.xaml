@@ -45,6 +45,11 @@
                     BackgroundColor="#4CAF50"
                     TextColor="White"/>
 
+            <Button Text="Ver mascotas registradas"
+        Clicked="OnVerMascotasClicked"
+        BackgroundColor="#FF9800"
+        TextColor="White"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
