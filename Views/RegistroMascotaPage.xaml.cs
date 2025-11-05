@@ -7,7 +7,8 @@ namespace VeterinariaApp.Views
 {
     public partial class RegistroMascotaPage : ContentPage
     {
-        FileResult fotoFile;
+        // Cambia la declaración del campo fotoFile para que acepte valores null
+        private FileResult? fotoFile;
 
         public RegistroMascotaPage()
         {
