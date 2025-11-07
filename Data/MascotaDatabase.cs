@@ -11,6 +11,7 @@ namespace VeterinariaApp.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Mascota>().Wait();
+            _database.CreateTableAsync<Cita>().Wait();
         }
 
         public Task<int> GuardarMascotaAsync(Mascota mascota)
@@ -27,5 +28,24 @@ namespace VeterinariaApp.Data
         {
             return _database.DeleteAsync(mascota);
         }
+
+        // Guardar una cita
+        public Task<int> GuardarCitaAsync(Cita cita)
+        {
+            return _database.InsertAsync(cita);
+        }
+
+        // Obtener todas las citas
+        public Task<List<Cita>> ObtenerCitasAsync()
+        {
+            return _database.Table<Cita>().OrderBy(c => c.Fecha).ToListAsync();
+        }
+
+        // Eliminar una cita
+        public Task<int> EliminarCitaAsync(Cita cita)
+        {
+            return _database.DeleteAsync(cita);
+        }
+
     }
 }

@@ -24,7 +24,7 @@ namespace VeterinariaApp.Views
 
         private async void OnAgendaCitasClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Próximamente", "La agenda de citas estará disponible en la siguiente fase.", "OK");
+            await Navigation.PushAsync(new AgendaCitasPage());
         }
 
         private async void OnHistorialMedicoClicked(object sender, EventArgs e)

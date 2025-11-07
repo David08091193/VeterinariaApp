@@ -9,6 +9,7 @@ namespace VeterinariaApp
 {
     public partial class App : Application
     {
+        // Base de datos compartida para mascotas y citas
         public static MascotaDatabase Database { get; private set; }
 
         public App()

@@ -12,6 +12,6 @@ namespace VeterinariaApp.Models
         public string Raza { get; set; }
         public string Edad { get; set; }
 
-        public string FotoPath { get; set; } // Ruta de la foto si decides guardarla
+        public string FotoPath { get; set; } 
     }
 }
