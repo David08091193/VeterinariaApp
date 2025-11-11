@@ -1,7 +1,6 @@
 using Microsoft.Maui.Controls;
 using VeterinariaApp.Views;
 
-
 namespace VeterinariaApp.Views
 {
     public partial class MenuPrincipalPage : ContentPage
@@ -13,7 +12,6 @@ namespace VeterinariaApp.Views
 
         private async void OnRegistrarMascotaClicked(object sender, EventArgs e)
         {
-            
             await Navigation.PushAsync(new RegistroMascotaPage());
         }
 
@@ -27,14 +25,31 @@ namespace VeterinariaApp.Views
             await Navigation.PushAsync(new AgendaCitasPage());
         }
 
-        private async void OnHistorialMedicoClicked(object sender, EventArgs e)
+        // ? Este método abre el formulario para registrar historial médico
+        private async void OnRegistrarHistorialClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Próximamente", "El historial médico estará disponible en la siguiente fase.", "OK");
+            await Navigation.PushAsync(new HistorialMedicoPage());
         }
 
+        // ? Este método abre la pantalla para consultar historial por mascota
+        private async void OnVerHistorialClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VerHistorialPage());
+        }
+        // ? Este método abre la pantalla de ingreso o salida de la mascota
         private async void OnEntradaSalidaClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Próximamente", "El módulo de entrada/salida estará disponible en la siguiente fase.", "OK");
+            await Navigation.PushAsync(new EntradaSalidaPage());
         }
+        // ? Este método abre la pantalla de VER ingreso o salida de la mascota
+
+        private async void OnVerEntradaSalidaClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VerEntradaSalidaPage());
+        }
+
+
+
+
     }
 }

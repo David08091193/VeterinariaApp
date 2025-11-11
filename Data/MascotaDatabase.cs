@@ -12,6 +12,8 @@ namespace VeterinariaApp.Data
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Mascota>().Wait();
             _database.CreateTableAsync<Cita>().Wait();
+            _database.CreateTableAsync<HistorialMedico>().Wait();
+            _database.CreateTableAsync<EntradaSalida>().Wait();
         }
 
         public Task<int> GuardarMascotaAsync(Mascota mascota)
@@ -46,6 +48,38 @@ namespace VeterinariaApp.Data
         {
             return _database.DeleteAsync(cita);
         }
+
+        // Guardar historial médico
+
+        public Task<int> GuardarHistorialAsync(HistorialMedico historial)
+        {
+            return _database.InsertAsync(historial);
+        }
+        public Task<List<HistorialMedico>> ObtenerHistorialPorMascotaAsync(string nombreMascota)
+        {
+            return _database.Table<HistorialMedico>()
+                            .Where(h => h.NombreMascota.ToLower() == nombreMascota.ToLower())
+                            .OrderByDescending(h => h.Fecha)
+                            .ToListAsync();
+        }
+
+        // Registro entrada salida
+
+        public Task<int> GuardarEntradaSalidaAsync(EntradaSalida registro)
+        {
+            return _database.InsertAsync(registro);
+        }
+
+        // VER Registro entraada salida
+
+        public Task<List<EntradaSalida>> ObtenerEntradasSalidasAsync()
+        {
+            return _database.Table<EntradaSalida>().ToListAsync();
+        }
+
+
+
+
 
     }
 }

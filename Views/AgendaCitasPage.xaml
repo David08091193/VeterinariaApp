@@ -14,9 +14,10 @@
                    HorizontalOptions="Center"
                    TextColor="#333"/>
 
-            <Entry x:Name="mascotaEntry"
-                   Placeholder="Nombre de la mascota"
-                   FontSize="18"/>
+            <Picker x:Name="mascotaPicker"
+                   Title="Selecciona una mascota"
+                   ItemDisplayBinding="{Binding Nombre}"
+                   BackgroundColor="White"/>
 
             <DatePicker x:Name="fechaPicker"
                         Format="dd/MM/yyyy"

@@ -15,11 +15,17 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame BorderColor="#DDD" Padding="10" Margin="5">
-                        <VerticalStackLayout>
+                        <VerticalStackLayout Spacing="5">
                             <Label Text="{Binding NombreMascota}" FontSize="18" FontAttributes="Bold"/>
                             <Label Text="{Binding Fecha, StringFormat='Fecha: {0:dd/MM/yyyy}'}"/>
                             <Label Text="{Binding Hora, StringFormat='Hora: {0}'}"/>
                             <Label Text="{Binding Motivo}" FontAttributes="Italic"/>
+
+                            <Button Text="Eliminar cita 🗑️"
+                                    BackgroundColor="#F44336"
+                                    TextColor="White"
+                                    Clicked="OnEliminarCitaClicked"
+                                    CommandParameter="{Binding .}"/>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>

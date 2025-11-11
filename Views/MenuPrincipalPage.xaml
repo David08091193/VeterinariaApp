@@ -25,8 +25,13 @@
                 BackgroundColor="#FF9800"
                 TextColor="White"/>
 
-        <Button Text="🩺 Historial Médico"
-                Clicked="OnHistorialMedicoClicked"
+        <Button Text="🩺  Historial Médico"
+        BackgroundColor="#7B1FA2"
+        TextColor="White"
+        Clicked="OnRegistrarHistorialClicked"/>
+
+        <Button Text="🔍 Ver Historial Médico"
+                Clicked="OnVerHistorialClicked"
                 BackgroundColor="#9C27B0"
                 TextColor="White"/>
 
@@ -34,5 +39,13 @@
                 Clicked="OnEntradaSalidaClicked"
                 BackgroundColor="#607D8B"
                 TextColor="White"/>
+
+        <Button Text="📋 Ver Entrada/Salida"
+        Clicked="OnVerEntradaSalidaClicked"
+        BackgroundColor="#00BCD4"
+        TextColor="White"/>
+
+
+
     </VerticalStackLayout>
 </ContentPage>
