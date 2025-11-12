@@ -11,6 +11,6 @@ public partial class BienvenidaPage : ContentPage
 
     private async void OnComenzarClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MenuPrincipalPage());
+        await Navigation.PushAsync(new LoginPage());
     }
 }

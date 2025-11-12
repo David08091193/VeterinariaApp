@@ -14,6 +14,8 @@ namespace VeterinariaApp.Data
             _database.CreateTableAsync<Cita>().Wait();
             _database.CreateTableAsync<HistorialMedico>().Wait();
             _database.CreateTableAsync<EntradaSalida>().Wait();
+            _database.CreateTableAsync<Usuario>().Wait();
+
         }
 
         public Task<int> GuardarMascotaAsync(Mascota mascota)
@@ -76,6 +78,23 @@ namespace VeterinariaApp.Data
         {
             return _database.Table<EntradaSalida>().ToListAsync();
         }
+
+        // Guardar y validar usuario
+
+        public Task<int> GuardarUsuarioAsync(Usuario usuario)
+        {
+            return _database.InsertAsync(usuario);
+        }
+
+        public async Task<Usuario> ValidarUsuarioAsync(string nombreUsuario, string contraseña)
+        {
+            return await _database.Table<Usuario>()
+                .Where(u => u.NombreUsuario == nombreUsuario && u.Contraseña == contraseña)
+                .FirstOrDefaultAsync();
+        }
+
+        // Crear usuario admin
+
 
 
 
