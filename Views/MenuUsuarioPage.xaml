@@ -1,0 +1,11 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VeterinariaApp.Views.MenuUsuarioPage"
+             Title="Menú Usuario">
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="Bienvenido Usuario" FontSize="24" HorizontalOptions="Center" />
+        <Button Text="Registrar Mascota" Clicked="OnRegistrarMascotaClicked" />
+        <Button Text="Ver Mis Mascotas" Clicked="OnListaMascotasClicked" />
+        <Button Text="Mis Citas" Clicked="OnAgendaCitasClicked" />
+    </StackLayout>
+</ContentPage>

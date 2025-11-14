@@ -15,5 +15,16 @@
                 BackgroundColor="#4CAF50"
                 TextColor="White"/>
 
+        <Picker x:Name="rolPicker" Title="Selecciona Rol">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Administrador</x:String>
+                    <x:String>Veterinario</x:String>
+                    <x:String>Usuario</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+
     </VerticalStackLayout>
 </ContentPage>

@@ -1,5 +1,6 @@
 using Microsoft.Maui.Controls;
 using VeterinariaApp.Models;
+using Microsoft.Maui.Storage;
 
 namespace VeterinariaApp.Views
 {
@@ -19,7 +20,22 @@ namespace VeterinariaApp.Views
 
             if (usuarioValido != null)
             {
-                await Navigation.PushAsync(new MenuPrincipalPage());
+                // Guardar el rol en preferencias
+                Preferences.Set("Rol", usuarioValido.Rol);
+
+                // Redirigir según el rol
+                switch (usuarioValido.Rol)
+                {
+                    case "Administrador":
+                        await Navigation.PushAsync(new MenuAdministradorPage());
+                        break;
+                    case "Veterinario":
+                        await Navigation.PushAsync(new MenuVeterinarioPage());
+                        break;
+                    default:
+                        await Navigation.PushAsync(new MenuUsuarioPage());
+                        break;
+                }
             }
             else
             {
@@ -31,7 +47,7 @@ namespace VeterinariaApp.Views
         {
             await Navigation.PushAsync(new RegistroUsuarioPage());
         }
-        //para que se borre el usaurio y la clave ingresada
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -39,7 +55,5 @@ namespace VeterinariaApp.Views
             usuarioEntry.Text = string.Empty;
             contraseñaEntry.Text = string.Empty;
         }
-
-
     }
 }

@@ -31,7 +31,8 @@ namespace VeterinariaApp.Views
             var nuevoUsuario = new Usuario
             {
                 NombreUsuario = usuario,
-                Contraseña = contraseña
+                Contraseña = contraseña,
+                Rol = rolPicker.SelectedItem?.ToString() ?? "Usuario"
             };
 
             await App.Database.GuardarUsuarioAsync(nuevoUsuario);
