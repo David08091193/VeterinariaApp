@@ -23,5 +23,11 @@ namespace VeterinariaApp.Views
         {
             await Navigation.PushAsync(new AgendaCitasPage());
         }
+        private async void OnCerrarSesionClicked(object sender, EventArgs e)
+        {
+            Preferences.Remove("Rol"); // Borra el rol guardado
+            await Navigation.PopToRootAsync(); // Regresa al LoginPage
+        }
+
     }
 }

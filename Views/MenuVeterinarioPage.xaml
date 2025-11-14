@@ -6,5 +6,7 @@
         <Label Text="Bienvenido Veterinario" FontSize="24" HorizontalOptions="Center" />
         <Button Text="Historial Médico" Clicked="OnHistorialMedicoClicked" />
         <Button Text="Agenda de Citas" Clicked="OnAgendaCitasClicked" />
+        <Button Text="Cerrar sesión" BackgroundColor="Red" TextColor="White" Clicked="OnCerrarSesionClicked" />
+
     </StackLayout>
 </ContentPage>

@@ -7,5 +7,7 @@
         <Button Text="Registrar Mascota" Clicked="OnRegistrarMascotaClicked" />
         <Button Text="Ver Mis Mascotas" Clicked="OnListaMascotasClicked" />
         <Button Text="Mis Citas" Clicked="OnAgendaCitasClicked" />
+        <Button Text="Cerrar sesión" BackgroundColor="Red" TextColor="White" Clicked="OnCerrarSesionClicked" />
+
     </StackLayout>
 </ContentPage>
