@@ -41,7 +41,8 @@ namespace VeterinariaApp.Views
                 NombreMascota = mascotaSeleccionada.Nombre,
                 Fecha = fecha,
                 Hora = hora,
-                Motivo = motivo
+                Motivo = motivo,
+                Usuario = Preferences.Get("NombreUsuario", "") // dueño que agenda
             };
 
             await App.Database.GuardarCitaAsync(nuevaCita);

@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage;
 
 namespace VeterinariaApp.Views
 {
@@ -19,16 +20,15 @@ namespace VeterinariaApp.Views
             await Navigation.PushAsync(new ListaMascotasPage());
         }
 
-        private async void OnAgendaCitasClicked(object sender, EventArgs e)
+        private async void OnAgendaClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AgendaCitasPage());
         }
-        //CERRAR LA SESION
+
         private async void OnCerrarSesionClicked(object sender, EventArgs e)
         {
-            Preferences.Remove("Rol"); // Borra el rol guardado
-            await Navigation.PopToRootAsync(); // Regresa al LoginPage
+            Preferences.Clear();
+            await Navigation.PushAsync(new LoginPage());
         }
-
     }
 }

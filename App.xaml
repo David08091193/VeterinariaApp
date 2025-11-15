@@ -6,13 +6,8 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <!-- Convertidor para mostrar imagen solo si existe -->
-            <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
-
-            <!-- Tus estilos existentes -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/RolStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

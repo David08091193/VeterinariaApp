@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage;
 
 namespace VeterinariaApp.Views
 {
@@ -9,20 +10,35 @@ namespace VeterinariaApp.Views
             InitializeComponent();
         }
 
-        private async void OnHistorialMedicoClicked(object sender, EventArgs e)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Aplicar estilos dinámicos si deseas cambiar en tiempo real
+            btnHistorial.Style = (Style)Application.Current.Resources["VetButtonStyle"];
+            btnAgenda.Style = (Style)Application.Current.Resources["VetButtonStyle"];
+            btnLista.Style = (Style)Application.Current.Resources["VetButtonStyle"];
+        }
+
+        private async void OnHistorialClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new HistorialMedicoPage());
         }
 
-        private async void OnAgendaCitasClicked(object sender, EventArgs e)
+        private async void OnAgendaClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AgendaCitasPage());
         }
-        private async void OnCerrarSesionClicked(object sender, EventArgs e)
+
+        private async void OnListaCitasClicked(object sender, EventArgs e)
         {
-            Preferences.Remove("Rol"); // Borra el rol guardado
-            await Navigation.PopToRootAsync(); // Regresa al LoginPage
+            await Navigation.PushAsync(new ListaCitasPage());
         }
 
+        private async void OnCerrarSesionClicked(object sender, EventArgs e)
+        {
+            Preferences.Clear(); // Limpia sesión
+            await Navigation.PushAsync(new LoginPage());
+        }
     }
 }

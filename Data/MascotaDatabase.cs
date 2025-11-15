@@ -1,4 +1,7 @@
 ﻿using SQLite;
+using System.Collections.Generic;
+using System.Linq;              // NECESARIO para Where/OrderBy
+using System.Threading.Tasks;
 using VeterinariaApp.Models;
 
 namespace VeterinariaApp.Data
@@ -15,7 +18,6 @@ namespace VeterinariaApp.Data
             _database.CreateTableAsync<HistorialMedico>().Wait();
             _database.CreateTableAsync<EntradaSalida>().Wait();
             _database.CreateTableAsync<Usuario>().Wait();
-
         }
 
         public Task<int> GuardarMascotaAsync(Mascota mascota)
@@ -39,10 +41,27 @@ namespace VeterinariaApp.Data
             return _database.InsertAsync(cita);
         }
 
-        // Obtener todas las citas
+        // Obtener todas las citas (general)
         public Task<List<Cita>> ObtenerCitasAsync()
         {
             return _database.Table<Cita>().OrderBy(c => c.Fecha).ToListAsync();
+        }
+
+        // NUEVO: Veterinario ve todas las citas
+        public Task<List<Cita>> ObtenerTodasLasCitasAsync()
+        {
+            return _database.Table<Cita>()
+                            .OrderBy(c => c.Fecha)
+                            .ToListAsync();
+        }
+
+        // NUEVO: Usuario ve solo sus citas
+        public Task<List<Cita>> ObtenerCitasPorUsuarioAsync(string nombreUsuario)
+        {
+            return _database.Table<Cita>()
+                            .Where(c => c.Usuario == nombreUsuario)
+                            .OrderBy(c => c.Fecha)
+                            .ToListAsync();
         }
 
         // Eliminar una cita
@@ -52,11 +71,11 @@ namespace VeterinariaApp.Data
         }
 
         // Guardar historial médico
-
         public Task<int> GuardarHistorialAsync(HistorialMedico historial)
         {
             return _database.InsertAsync(historial);
         }
+
         public Task<List<HistorialMedico>> ObtenerHistorialPorMascotaAsync(string nombreMascota)
         {
             return _database.Table<HistorialMedico>()
@@ -66,13 +85,10 @@ namespace VeterinariaApp.Data
         }
 
         // Registro entrada salida
-
         public Task<int> GuardarEntradaSalidaAsync(EntradaSalida registro)
         {
             return _database.InsertAsync(registro);
         }
-
-        // VER Registro entraada salida
 
         public Task<List<EntradaSalida>> ObtenerEntradasSalidasAsync()
         {
@@ -80,7 +96,6 @@ namespace VeterinariaApp.Data
         }
 
         // Guardar y validar usuario
-
         public Task<int> GuardarUsuarioAsync(Usuario usuario)
         {
             return _database.InsertAsync(usuario);
@@ -92,13 +107,5 @@ namespace VeterinariaApp.Data
                 .Where(u => u.NombreUsuario == nombreUsuario && u.Contraseña == contraseña)
                 .FirstOrDefaultAsync();
         }
-
-        // Crear usuario admin
-
-
-
-
-
-
     }
 }

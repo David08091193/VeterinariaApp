@@ -12,5 +12,8 @@ namespace VeterinariaApp.Models
         public DateTime Fecha { get; set; }
         public TimeSpan Hora { get; set; }
         public string Motivo { get; set; }
+
+        // NUEVO: dueño que agendó
+        public string Usuario { get; set; } = string.Empty;
     }
 }

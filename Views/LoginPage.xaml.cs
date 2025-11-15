@@ -20,8 +20,9 @@ namespace VeterinariaApp.Views
 
             if (usuarioValido != null)
             {
-                // Guardar el rol en preferencias
+                // Guardar rol y nombre del usuario
                 Preferences.Set("Rol", usuarioValido.Rol);
+                Preferences.Set("NombreUsuario", usuarioValido.NombreUsuario);
 
                 // Redirigir según el rol
                 switch (usuarioValido.Rol)
@@ -51,7 +52,6 @@ namespace VeterinariaApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             usuarioEntry.Text = string.Empty;
             contraseñaEntry.Text = string.Empty;
         }

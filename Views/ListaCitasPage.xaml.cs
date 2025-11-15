@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage; // NECESARIO para Preferences
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,12 +17,25 @@ namespace VeterinariaApp.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await CargarCitas();
+            await CargarCitasPorRol();
         }
 
-        private async Task CargarCitas()
+        private async Task CargarCitasPorRol()
         {
-            List<Cita> citas = await App.Database.ObtenerCitasAsync();
+            string rol = Preferences.Get("Rol", "Usuario");
+            string nombreUsuario = Preferences.Get("NombreUsuario", "");
+
+            List<Cita> citas;
+
+            if (rol == "Veterinario")
+            {
+                citas = await App.Database.ObtenerTodasLasCitasAsync();
+            }
+            else
+            {
+                citas = await App.Database.ObtenerCitasPorUsuarioAsync(nombreUsuario);
+            }
+
             citasCollectionView.ItemsSource = citas;
         }
 
@@ -38,7 +52,7 @@ namespace VeterinariaApp.Views
             {
                 await App.Database.EliminarCitaAsync(citaSeleccionada);
                 await DisplayAlert("Cita eliminada", "La cita ha sido eliminada correctamente.", "OK");
-                await CargarCitas(); // Recarga la lista
+                await CargarCitasPorRol(); // Recarga según el rol
             }
         }
     }
